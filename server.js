@@ -34,13 +34,13 @@ const Message = mongoose.model('Message', messageSchema);
 // });
 
 // API endpoint to get messages
-app.get('/api/messages', async (req, res) => {
+app.get('http://clipboard-backend.vercel.app/api/messages', async (req, res) => {
   const messages = await Message.find();
   res.json(messages);
 });
 
 // API endpoint to post a message
-app.post('/api/messages', async (req, res) => {
+app.post('http://clipboard-backend.vercel.app/api/messages', async (req, res) => {
   const { content } = req.body;
   const newMessage = new Message({ content });
   await newMessage.save();
@@ -52,12 +52,12 @@ app.listen(PORT, () => {
 });
   
 
-app.delete('/api/messages/:id', async (req, res) => {
+app.delete('http://clipboard-backend.vercel.app/api/messages/:id', async (req, res) => {
   const { id } = req.params;
   await Message.findByIdAndDelete(id);
   res.json({ message: 'Message deleted successfully' });
 });
-app.put('/api/messages/:id', async (req, res) => {
+app.put('http://clipboard-backend.vercel.app/api/messages/:id', async (req, res) => {
   const messageId = req.params.id;
   const updatedData = req.body;
 
